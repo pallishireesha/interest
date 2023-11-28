@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Table to PDF</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Dynamic Table</h2>
+
+<div>
+  <button onclick="addRow()">Add Row</button>
+  <button onclick="generatePDF()">Generate PDF</button>
+</div>
+
+<table id="dynamicTable">
+  <thead>
+    <tr>
+      <th>Field 1</th>
+      <th>Field 2</th>
+      <th>Field 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- User-added rows will go here -->
+  </tbody>
+</table>
+
+<script>
+  function addRow() {
+    var table = document.getElementById('dynamicTable');
+    var newRow = table.insertRow(table.rows.length);
+    for (var i = 0; i < 3; i++) {
+      var cell = newRow.insertCell(i);
+      var input = document.createElement('input');
+      input.type = 'text';
+      cell.appendChild(input);
+    }
+  }
+
+  function generatePDF() {
+    // Open the print dialog
+    window.print();
+  }
+</script>
+
+</body>
+</html>
